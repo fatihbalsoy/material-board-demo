@@ -10,10 +10,10 @@ export async function main() {
   const root = document.getElementById("root");
   const iframe = render(root);
   const response = await fetch(
-    "/demo/wp-material-design/wp-material-design-0.2.1-alpha.zip"
+    "/demo/wp-material-design/material-dashboard.zip"
   );
   const blob = await response.blob();
-  const pluginZipFile = new File([blob], "wp-material-design-0.2.1-alpha.zip");
+  const pluginZipFile = new File([blob], "material-dashboard.zip");
   console.log(response.url);
 
   const playground = await startPlaygroundWeb({
@@ -39,7 +39,7 @@ export async function main() {
         {
           step: "updateUserMeta",
           meta: {
-            show_welcome_panel: "0",
+            show_welcome_panel: "1",
           },
           userId: 1,
         },
