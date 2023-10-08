@@ -1,7 +1,5 @@
 import {
   startPlaygroundWeb,
-  installPlugin,
-  login,
 } from "@wp-playground/client";
 
 import "./style.css";
@@ -9,12 +7,6 @@ import "./style.css";
 export async function main() {
   const root = document.getElementById("root");
   const iframe = render(root);
-  const response = await fetch(
-    "/demo/wp-material-design/material-dashboard.zip"
-  );
-  const blob = await response.blob();
-  const pluginZipFile = new File([blob], "material-dashboard.zip");
-  console.log(response.url);
 
   const playground = await startPlaygroundWeb({
     iframe,
@@ -44,9 +36,34 @@ export async function main() {
           userId: 1,
         },
         {
-          step: "installPlugin",
-          pluginZipFile,
+          step: "mkdir",
+          path: "/wordpress/wp-md"
         },
+        {
+          step: "writeFile",
+          path: "/wordpress/wp-md/material-dashboard.zip",
+          data: {
+            resource: "url",
+            url: "/demo/wp-material-design/material-dashboard.zip",
+            caption: "Downloading Material Dashboard"
+          },
+          progress: {
+            weight: 2,
+            caption: "Applying Material Dashboard"
+          }
+        },
+        {
+          step: "unzip",
+          zipPath: "/wordpress/wp-md/material-dashboard.zip",
+          extractToPath: "/wordpress/wp-md"
+        },
+        {
+          step: "installPlugin",
+          pluginZipFile: {
+            resource: "vfs",
+            path: "/wordpress/wp-md/material-dashboard.zip"
+          }
+        }
       ],
     },
   });
