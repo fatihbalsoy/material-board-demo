@@ -44,7 +44,7 @@ export async function main() {
           path: "/wordpress/wp-md/material-dashboard.zip",
           data: {
             resource: "url",
-            url: "/demo/wp-material-design/material-dashboard.zip",
+            url: "/material-dashboard.zip",
             caption: "Downloading Material Dashboard"
           },
           progress: {
