@@ -7,6 +7,8 @@ import "./style.css";
 export async function main() {
   const root = document.getElementById("root");
   const iframe = render(root);
+  const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = isDarkMode ? "'dark'" : "'light'";
 
   const playground = await startPlaygroundWeb({
     iframe,
@@ -18,6 +20,10 @@ export async function main() {
         wp: "latest",
       },
       steps: [
+        {
+          "step": "runPHP",
+          "code": `<?php require_once 'wordpress/wp-load.php'; update_option('fbwpmdp_theme', ${theme}); ?>`
+        },
         { step: "login", username: "admin", password: "password" },
         {
           step: "setSiteOptions",
@@ -36,34 +42,12 @@ export async function main() {
           userId: 1,
         },
         {
-          step: "mkdir",
-          path: "/wordpress/wp-md"
-        },
-        {
-          step: "writeFile",
-          path: "/wordpress/wp-md/material-dashboard.zip",
-          data: {
-            resource: "url",
-            url: "/material-dashboard.zip",
-            caption: "Downloading Material Dashboard"
-          },
-          progress: {
-            weight: 2,
-            caption: "Applying Material Dashboard"
+          "step": "installPlugin",
+          "pluginZipFile": {
+            "resource": "wordpress.org/plugins",
+            "slug": "material-board"
           }
         },
-        {
-          step: "unzip",
-          zipPath: "/wordpress/wp-md/material-dashboard.zip",
-          extractToPath: "/wordpress/wp-md"
-        },
-        {
-          step: "installPlugin",
-          pluginZipFile: {
-            resource: "vfs",
-            path: "/wordpress/wp-md/material-dashboard.zip"
-          }
-        }
       ],
     },
   });
