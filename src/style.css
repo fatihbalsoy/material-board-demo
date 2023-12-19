@@ -21,6 +21,13 @@ body.with-background {
 	background-attachment: fixed;
 }
 
+@media (prefers-color-scheme: dark) {
+	body.with-background {
+		background: #1e1e1e;
+		color: #fff;
+	}
+}
+
 .playground__viewport--full-size {
 	position: relative;
 	width: 100%;
