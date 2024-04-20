@@ -45,6 +45,13 @@ export async function main() {
         //   "step": "installPlugin",
         //   "pluginZipFile": {
         //     "resource": "url",
+        //     "url": "/material-board.zip"
+        //   }
+        // },
+        // {
+        //   "step": "installPlugin",
+        //   "pluginZipFile": {
+        //     "resource": "url",
         //     "url": "https://github.com/fatihbalsoy/material-board/archive/refs/heads/release-deployed.zip"
         //   }
         // },
