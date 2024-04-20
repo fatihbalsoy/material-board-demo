@@ -41,6 +41,13 @@ export async function main() {
           },
           userId: 1,
         },
+        // {
+        //   "step": "installPlugin",
+        //   "pluginZipFile": {
+        //     "resource": "url",
+        //     "url": "https://github.com/fatihbalsoy/material-board/archive/refs/heads/release-deployed.zip"
+        //   }
+        // },
         {
           "step": "installPlugin",
           "pluginZipFile": {
