@@ -41,13 +41,17 @@ export async function main() {
           },
           userId: 1,
         },
-        // {
-        //   "step": "installPlugin",
-        //   "pluginZipFile": {
-        //     "resource": "url",
-        //     "url": "/material-board.zip"
-        //   }
-        // },
+
+        // Local:
+        {
+          "step": "installPlugin",
+          "pluginZipFile": {
+            "resource": "url",
+            "url": "/material-board.zip"
+          }
+        },
+
+        // CORS issue:
         // {
         //   "step": "installPlugin",
         //   "pluginZipFile": {
@@ -55,13 +59,15 @@ export async function main() {
         //     "url": "https://github.com/fatihbalsoy/material-board/archive/refs/heads/release-deployed.zip"
         //   }
         // },
-        {
-          "step": "installPlugin",
-          "pluginZipFile": {
-            "resource": "wordpress.org/plugins",
-            "slug": "material-board"
-          }
-        },
+
+        // No longer maintained:
+        // {
+        //   "step": "installPlugin",
+        //   "pluginZipFile": {
+        //     "resource": "wordpress.org/plugins",
+        //     "slug": "material-board"
+        //   }
+        // },
       ],
     },
   });
